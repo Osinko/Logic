@@ -16,13 +16,14 @@ public class Lamp : MonoBehaviour
 				if (timeCount > timeSpan) {
 						timeCount %= timeSpan;
 						ChangeLamp ();
-				}
 
-				if (Input.GetKeyDown (KeyCode.Space)) {
-						anim.SetTrigger ("elevatorTrig");
-						StartCoroutine (MonsterCrouch ());
-						//メカニムに設定したトリガーをstringで指定して起動する
-						//メカニム側はanyStateではなく新しく自分でつくったNewStateでトラジションを双方につなげ作る
+						//今回はココがテーマ
+						if (!blue && yellow || !blue && !yellow || blue && yellow) {
+								anim.SetTrigger ("elevatorTrig");
+								StartCoroutine (MonsterCrouch ());
+								//メカニムに設定したトリガーをstringで指定して起動する
+								//メカニム側はanyStateではなく新しく自分でつくったNewStateでトラジションを双方につなげ作る}
+						}
 				}
 		}
 
@@ -37,7 +38,6 @@ public class Lamp : MonoBehaviour
 				monster.SetBool ("crouch", true);
 				yield return delay;
 				monster.SetBool ("crouch", false);
-		
 		}
 
 		void ChangeLamp ()
@@ -48,5 +48,4 @@ public class Lamp : MonoBehaviour
 				blueLight.enabled = blue;
 				yellowLight.enabled = yellow;
 		}
-
 }
