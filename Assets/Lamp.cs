@@ -18,7 +18,8 @@ public class Lamp : MonoBehaviour
 						ChangeLamp ();
 
 						//今回はココがテーマ
-						if (!blue && yellow || !blue && !yellow || blue && yellow) {
+						//if (!blue && yellow || !blue && !yellow || blue && yellow) {
+						if (!blue || yellow) {
 								anim.SetTrigger ("elevatorTrig");
 								StartCoroutine (MonsterCrouch ());
 								//メカニムに設定したトリガーをstringで指定して起動する
